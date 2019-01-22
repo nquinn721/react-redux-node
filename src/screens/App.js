@@ -23,5 +23,5 @@ class App extends Component {
 
 export default connect(
   ({lob}) => ({lob}),
-  (dispatch) => ({getData: getData(dispatch)})
+  // (dispatch) => ({getData: getData(dispatch)})
 )(App);
