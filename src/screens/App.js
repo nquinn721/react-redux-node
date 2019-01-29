@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { getData } from 'redux/actions/lob.action';
 
 import './App.css';
@@ -23,5 +24,5 @@ class App extends Component {
 
 export default connect(
   ({lob}) => ({lob}),
-  // (dispatch) => ({getData: getData(dispatch)})
+  (dispatch) => (bindActionCreators({getData}, dispatch))
 )(App);
