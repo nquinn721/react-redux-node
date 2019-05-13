@@ -1,26 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getData } from "redux/actions/lob.action";
+import { getTodos } from "redux/actions/todo.action";
 
 import "./App.css";
 
 class App extends Component {
+  componentWillMount() {
+    console.log("mount");
+    this.props.getTodos();
+  }
   render() {
+    const {
+      todo: { todos = [] }
+    } = this.props;
+    console.log(todos);
     return (
       <div className="App">
-        <header className="App-header">
-          Welcome {this.props.lob.lob}
-          <div>
-            <button onClick={this.props.getData}>Click me</button>
-          </div>
-        </header>
+        <main>
+          {todos.map((v, i) => (
+            <div key={i}>{v.title}</div>
+          ))}
+        </main>
       </div>
     );
   }
 }
 
 export default connect(
-  ({ lob }) => ({ lob }),
-  dispatch => bindActionCreators({ getData }, dispatch)
+  ({ todo }) => ({ todo }),
+  dispatch => bindActionCreators({ getTodos }, dispatch)
 )(App);

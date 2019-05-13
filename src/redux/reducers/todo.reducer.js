@@ -1,11 +1,13 @@
-const initialState = {};
+const initialState = {
+  todos: [[]]
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "GET_LOB_DATA_SUCCESS":
+    case "GET_TODOS_SUCCESS":
       return {
         ...state,
-        ...action.data
+        todos: action.data
       };
     default:
       return { ...state };
